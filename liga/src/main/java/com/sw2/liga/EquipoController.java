@@ -2,6 +2,8 @@ package com.sw2.liga;
 
 import java.util.List;
 
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,12 +38,17 @@ public class EquipoController {
 	  // Single item
 	  
 	  @GetMapping("/equipos/{id}")
-	  Equipo one(@PathVariable Long id) {
-	    
-	    return repository.findById(id)
-	      .orElseThrow(() -> new EquipoNotFoundException(id));
-	  }
+	  EntityModel<Equipo> one(@PathVariable Long id) {
 
+	    Equipo equipo = repository.findById(id) //
+	        .orElseThrow(() -> new EquipoNotFoundException(id));
+
+	    return EntityModel.of(equipo, //
+	        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(EquipoController.class).one(id)).withSelfRel(),
+	        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(EquipoController.class).all()).withRel("equipos"));
+	  }
+	  
+	  
 	  @PutMapping("/equipos/{id}")
 	  Equipo reemplazarEquipo(@RequestBody Equipo equipoNuevo, @PathVariable Long id) {
 	    
