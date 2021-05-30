@@ -12,11 +12,40 @@ class LoadDatabase {
   private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
   @Bean
-  CommandLineRunner initDatabase(EquipoRepository repository) {
+  CommandLineRunner initDatabase(EquipoRepository repoEquipo, LigaRepository ligaRepo) {
 
     return args -> {
-      log.info("Preloading " + repository.save(new Equipo("Real Madrid", "España", 84)));
-      log.info("Preloading " + repository.save(new Equipo("Chelsea", "Inglaterra", 50)));
+    	// Inicializamos el Servicio Web con dos Ligas, dos equipos por Liga.
+    	Liga laLiga = new Liga("Liga Santander", "España");
+    	ligaRepo.save(laLiga);
+    	
+    	Equipo madrid = new Equipo("Real Madrid", "Zidedine Zidane", 104);
+    	madrid.setLiga(laLiga);
+    	Equipo barsa = new Equipo("F.C Barcelona", "Ronald Koeman", 77);
+    	barsa.setLiga(laLiga);
+    	
+    	laLiga.addEquipo(madrid);
+    	laLiga.addEquipo(barsa);
+    	ligaRepo.save(laLiga);
+    	repoEquipo.save(madrid);
+    	repoEquipo.save(barsa);
+    	
+    	Liga premier = new Liga("Premier League", "Inglaterra");
+    	ligaRepo.save(premier);
+    	
+    	Equipo chelsea = new Equipo("Chelsea", "Thomas Tuchel", 25);
+    	chelsea.setLiga(premier);
+    	Equipo liverpool = new Equipo("Liverpool", "Jurgen Klopp", 56);
+    	liverpool.setLiga(premier);
+    	
+    	premier.addEquipo(chelsea);
+    	premier.addEquipo(liverpool);
+    	ligaRepo.save(premier);
+    	repoEquipo.save(chelsea);
+    	repoEquipo.save(liverpool);
+    	
+    	
     };
+    
   }
 }

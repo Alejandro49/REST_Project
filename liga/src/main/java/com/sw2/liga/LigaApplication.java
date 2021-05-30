@@ -8,12 +8,7 @@ public class LigaApplication {
 
 	public static void main(String... args) {
 		SpringApplication.run(LigaApplication.class, args);
-		/*Equipo eq = new Equipo();
-		eq.setId(1);
-		eq.setNombre("Madrid");
-		eq.setPais("España");
-		eq.setTitulos(33);
-		System.out.println(eq);*/
+		
 	}
 
 }
