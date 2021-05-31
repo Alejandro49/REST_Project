@@ -12,7 +12,9 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Equipo {
 	
-	private @Id @GeneratedValue Long id;
+	@Id 
+	@GeneratedValue 
+	private long id;
 	
 	@Column(nullable=false)
 	private String nombre;
@@ -27,16 +29,18 @@ public class Equipo {
     @JoinColumn(name="liga_id")
     private Liga liga;
 	
-	Equipo() {}
+	public Equipo() {
+		super();
+	}
 	
-	Equipo(String nombre, String entrenador, int titulos) {
+	public Equipo(String nombre, String entrenador, int titulos) {
 	    this.nombre = nombre;
 	    this.entrenador = entrenador;
 	    this.titulos = titulos;
 	}
 	
 	
-	 @Override
+/*	 @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -60,7 +64,7 @@ public class Equipo {
 			return false;
 		return true;
 	}
-
+*/
 	@Override
 	  public String toString() {
 	    return "Equipo{" + "id=" + this.id + ", nombre='" + this.nombre + '\'' + ", entrenador='" + this.entrenador + '\'' + " titulos: " + this.titulos + "}";
@@ -70,7 +74,7 @@ public class Equipo {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getNombre() {
