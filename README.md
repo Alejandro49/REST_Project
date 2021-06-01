@@ -36,11 +36,15 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
   POST /Liga/:id/Equipo
   
 ### Mostrar todas las ligas:
-  GET  /Liga
+  GET  http://localhost:8080/ligas
   
 ### Mostrar todos los equipos de una liga:
-  GET /Liga/:id
+  GET http://localhost:8080/ligas/{id}/equipos
+  Ejemplo:
+  http://localhost:8080/ligas/1/equipos
   
 ### Mostrar un equipo en concreto:
-  GET /Liga/:id/Equipo/:id
+  GET http://localhost:8080/ligas/{id}/equipos/{id}
+  Ejemplo:
+  http://localhost:8080/ligas/1/equipos/2
   
