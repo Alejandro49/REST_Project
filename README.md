@@ -30,7 +30,12 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
 ## Operaciones que se podrán realizar para gestionar nuestra liga:
 
 ### Crear una liga:
-  POST /Liga 
+  POST http://localhost:8080/ligas
+  
+  ejemplo de estructura JSON para la creción:
+  {
+  "nombre": "Bundesliga"
+  }
   
 ### Crear un equipo:
   POST /Liga/:id/Equipo
