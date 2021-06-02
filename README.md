@@ -53,3 +53,10 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
   Ejemplo:
   http://localhost:8080/ligas/1/equipos/2
   
+### Actualizar una liga:
+  PUT http://localhost:8080/ligas
+  
+  
+### Borrar una liga: 
+  DELETE http://localhost:8080/ligas 
+  
