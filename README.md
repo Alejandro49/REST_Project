@@ -30,7 +30,7 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
 ## Operaciones que se podrán realizar para gestionar nuestra liga:
 
 ### Método POST:
-	Pasos para crear una liga o un equipo:
+	Pasos para crear una liga o un equipo con Postman:
 		1. Escribir el tipo de consulta y la URL
 		2. En "Headers" crear una nueva cabecera:
 			Key: Content-type
@@ -57,7 +57,7 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
 			"titulos":23
 		}
 ### Método GET:
-	Pasos para mostrar cualquier contenido:
+	Pasos para mostrar cualquier contenido con Postman:
 		1. Escribir el tipo de consulta y la URL
 		2. Send
 		
@@ -101,5 +101,15 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
 ### Método DELETE:
  
 #### Borrar una liga: 
-	DELETE http://localhost:8080/ligas 
+	DELETE http://localhost:8080/ligas/:id
+	Las ligas solo se pueden borrar cuando se han eliminado todos los equipos de la liga.
+		Ejemplo:
+		DELETE http://localhost:8080/ligas/1
+		
+
+#### Borrar un equipo:
+	DELETE http://localhost:8080/equipos/:id
+	
+		Ejemplo:
+		DELETE http://localhost:8080/equipos/3
   
