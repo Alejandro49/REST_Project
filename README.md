@@ -29,34 +29,60 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
 
 ## Operaciones que se podrán realizar para gestionar nuestra liga:
 
-### Crear una liga:
-  POST http://localhost:8080/ligas
+### Método POST:
+	Pasos para crear una liga o un equipo:
+		1. Escribir el tipo de consulta y la URL
+		2. En "Headers" crear una nueva cabecera:
+			Key: Content-type
+			Value: application/JSON
+		3. En "Body", seleccionar "raw" y de texto ponemos "JSON"
+			3.1. Escribir el contenido del JSON
+		4. Send
+		
+#### Crear una liga:
+	POST http://localhost:8080/ligas
+
+		ejemplo de estructura JSON para la creción:
+		{
+			"nombre": "Bundesliga"
+		}
+		
+#### Crear un equipo:
+	POST http://localhost:8080/equipos
+	  
+		ejemplo de estructura JSON para la creción:
+		{
+			"nombre":"Valencia FC",
+			"entrenador":"Javi Garcia",
+			"titulos":23
+		}
+### Método GET:
+	Pasos para mostrar cualquier contenido:
+		1. Escribir el tipo de consulta y la URL
+		2. Send
+		
+#### Mostrar todas las ligas:
+	GET  http://localhost:8080/ligas
   
-  ejemplo de estructura JSON para la creción:
-  {
-  "nombre": "Bundesliga"
-  }
+#### Mostrar todos los equipos de una liga:
+	GET http://localhost:8080/ligas/{id}/equipos
+
+		Ejemplo:
+		GET http://localhost:8080/ligas/1/equipos
   
-### Crear un equipo:
-  POST /Liga/:id/Equipo
+#### Mostrar un equipo en concreto:
+	GET http://localhost:8080/ligas/{id}/equipos/{id}
+
+		Ejemplo:
+		GET http://localhost:8080/ligas/1/equipos/2
+
+### Método PUT:
+
+#### Actualizar una liga:
+	PUT http://localhost:8080/ligas
   
-### Mostrar todas las ligas:
-  GET  http://localhost:8080/ligas
-  
-### Mostrar todos los equipos de una liga:
-  GET http://localhost:8080/ligas/{id}/equipos
-  Ejemplo:
-  http://localhost:8080/ligas/1/equipos
-  
-### Mostrar un equipo en concreto:
-  GET http://localhost:8080/ligas/{id}/equipos/{id}
-  Ejemplo:
-  http://localhost:8080/ligas/1/equipos/2
-  
-### Actualizar una liga:
-  PUT http://localhost:8080/ligas
-  
-  
-### Borrar una liga: 
-  DELETE http://localhost:8080/ligas 
+### Método DELETE:
+ 
+#### Borrar una liga: 
+	DELETE http://localhost:8080/ligas 
   
