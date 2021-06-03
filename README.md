@@ -80,6 +80,23 @@ Pagina web para descargar Tomcat 9: https://tomcat.apache.org/download-90.cgi
 
 #### Actualizar una liga:
 	PUT http://localhost:8080/ligas
+
+#### Actualizar un equipo:
+	PUT http://localhost:8080/equipos/{id}
+	
+		Ejemplo:
+		PUT http://localhost:8080/equipos/2
+		
+		Y dentro de "Body", seleccionamos "raw" y tipo de texto "JSON".
+		Y escribimos lo que queramos en el formato JSON:
+		{
+			"nombre": "Real Madrid",
+			"entrenador":"Carlo Ancelotti",
+			"titulos":104
+		}
+		Además hay que tener la siguiente cabecera (Headers):
+			Key: Content-type
+			Value: application/JSON
   
 ### Método DELETE:
  
